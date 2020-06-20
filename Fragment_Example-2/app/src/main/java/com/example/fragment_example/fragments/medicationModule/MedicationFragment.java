@@ -67,27 +67,6 @@ public class MedicationFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(medicationAdaptor);
 
-
-        Log.d("trying to get data", "trying to get data");
-        medicationViewModel = ViewModelProviders.of(this).get(MedicationViewModel.class);
-        medicationViewModel.init("lipitor", "1");
-        medicationViewModel.getMedicineRepository().observe(this, response -> {
-            if(response != null) {
-                medicineSearchResponse = new MedicineSearchResponse(response.getResults());
-                Log.d("get medicine response", medicineSearchResponse.getResults().size() + " is the size of gthe results");
-                for(MedicationResult res : medicineSearchResponse.getResults()) {
-                    Log.d("medicine name", res.getOpenFDA().getBrandName().get(0));
-                    Log.d("description", res.getDescription().get(0));
-                    Log.d("info for patients", res.getInformationForPatients().get(0));
-                }
-            }
-            else {
-                Log.d("error??", "failed");
-            }
-        });
-
-
-
         prepareMedicationData();
 
 

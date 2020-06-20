@@ -49,7 +49,7 @@ public class HomepageFragment extends Fragment {
                         fragmentTransaction.commit();
                     }else if(finalI==1){
                         fragmentTransaction = getFragmentManager().beginTransaction();
-                        MedicationFragment medicationFragment = new MedicationFragment();
+                        AddMedicationFragment medicationFragment = new AddMedicationFragment();
                         fragmentTransaction.replace(R.id.main_container, medicationFragment);
                         fragmentTransaction.commit();
                     }else if(finalI==2){

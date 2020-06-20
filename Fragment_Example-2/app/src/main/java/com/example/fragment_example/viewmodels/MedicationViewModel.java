@@ -1,4 +1,6 @@
 package com.example.fragment_example.viewmodels;
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -16,6 +18,7 @@ public class MedicationViewModel extends ViewModel {
         }
         else {
             medicationRepository = MedicationRepository.getInstance();
+            Log.d("calling", "making api call");
             mutableLiveData = medicationRepository.getMedicationByName(medicationName, limit);
         }
     }

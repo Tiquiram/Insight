@@ -44,6 +44,8 @@
     <string name="lb">lb</string>
     <string name="medication_title">My Medication</string>
     <string name="add_medication_title">Add Medicine</string>
+    <string name="medication_search_name">Medication Name</string>
+    <string name="medication_search_description">Medication Description</string>
     <string-array name="inches">
         <item>0</item>
         <item>1</item>

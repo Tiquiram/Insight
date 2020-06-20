@@ -35,11 +35,20 @@ public class MedicationRepository {
 
     public MutableLiveData<MedicineSearchResponse> getMedicationByName(String medicationName, String limit) {
         final MutableLiveData<MedicineSearchResponse> medicationData = new MutableLiveData<>();
+        Log.d("get", "getting medication data");
         medicationAPI.getMedicationByName("openfda.brand_name:" + medicationName, limit).enqueue(new Callback<MedicineSearchResponse>() {
             @Override
             public void onResponse(Call<MedicineSearchResponse> call, Response<MedicineSearchResponse> response) {
                 if (response.isSuccessful()){
+                    Log.d("fetched", "Data success");
                     medicationData.setValue(response.body());
+                }
+                else {
+                    Log.d("something", "weird happened");
+                    Log.d("response", response.message());
+                    Log.d("response", response.code() + "");
+                    Log.d("response", response.errorBody() + "");
+
                 }
             }
 
