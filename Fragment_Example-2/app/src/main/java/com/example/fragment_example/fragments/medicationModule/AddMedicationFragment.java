@@ -55,8 +55,8 @@ public class AddMedicationFragment extends Fragment {
                 Log.d("get medicine response", medicineSearchResponse.getResults().size() + " is the size of the results");
                 for(MedicationResult res : medicineSearchResponse.getResults()) {
                     Log.d("medicine name", res.getOpenFDA().getBrandName().get(0));
-                    Log.d("description", res.getDescription().get(0));
-                    Log.d("info for patients", res.getInformationForPatients().get(0));
+//                    Log.d("description", res.getDescription().get(0));
+//                    Log.d("info for patients", res.getInformationForPatients().get(0));
                 }
                 medicationSearchAdaptor.setData(medicineSearchResponse);
             }
@@ -89,7 +89,7 @@ public class AddMedicationFragment extends Fragment {
     }
 
     public void performSearch(String query) {
-        medicationViewModel.searchForMedication(query, "1");
+        medicationViewModel.searchForMedication(query, "50");
     }
 //    private void prepareMedicationData() {
 //        Medication medication = new Medication("Metformin", 200, "mg", 2);
