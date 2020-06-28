@@ -5,28 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
-
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.fragment_example.R;
-import com.example.fragment_example.adaptors.MedicationAdaptor;
 import com.example.fragment_example.adaptors.MedicationSearchAdaptor;
 import com.example.fragment_example.databinding.FragmentAddMedicationBinding;
-import com.example.fragment_example.databinding.FragmentMedicationBinding;
-import com.example.fragment_example.fragments.GlucoseFragment;
-import com.example.fragment_example.model.medicationModule.Medication;
 import com.example.fragment_example.model.medicationModule.MedicationResult;
 import com.example.fragment_example.model.medicationModule.MedicineSearchResponse;
 import com.example.fragment_example.viewmodels.MedicationViewModel;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class AddMedicationFragment extends Fragment {
 
@@ -55,6 +46,27 @@ public class AddMedicationFragment extends Fragment {
         recyclerView.setAdapter(medicationSearchAdaptor);
         medicationSearchAdaptor.notifyDataSetChanged();
 
+        medicationViewModel = ViewModelProviders.of(AddMedicationFragment.this).get(MedicationViewModel.class);
+        medicationViewModel.init();
+        medicationViewModel.getMedicationLiveData().observe(AddMedicationFragment.this, response -> {
+            if(response != null) {
+              medicineSearchResponse = new MedicineSearchResponse(response.getResults());
+
+                Log.d("get medicine response", medicineSearchResponse.getResults().size() + " is the size of the results");
+                for(MedicationResult res : medicineSearchResponse.getResults()) {
+                    Log.d("medicine name", res.getOpenFDA().getBrandName().get(0));
+                    Log.d("description", res.getDescription().get(0));
+                    Log.d("info for patients", res.getInformationForPatients().get(0));
+                }
+                medicationSearchAdaptor.setData(medicineSearchResponse);
+            }
+            else {
+                Log.d("error??", "failed");
+                medicationSearchAdaptor.notifyDataSetChanged();
+            }
+        });
+
+
         binding.medicineSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             public boolean onQueryTextSubmit(String query) {
@@ -62,27 +74,7 @@ public class AddMedicationFragment extends Fragment {
                 Log.d("SEARCH IS", "QueryTextSubmit : "+ query);
                 //load search query
                 Log.d("trying to get data", query);
-                medicationViewModel = ViewModelProviders.of(AddMedicationFragment.this).get(MedicationViewModel.class);
-                medicationViewModel.init(query, "1");
-                medicationViewModel.getMedicineRepository().observe(AddMedicationFragment.this, response -> {
-                    if(response != null) {
-                        medicineSearchResponse = new MedicineSearchResponse(response.getResults());
-
-                        Log.d("get medicine response", medicineSearchResponse.getResults().size() + " is the size of the results");
-                        for(MedicationResult res : medicineSearchResponse.getResults()) {
-                            Log.d("medicine name", res.getOpenFDA().getBrandName().get(0));
-                            Log.d("description", res.getDescription().get(0));
-                            Log.d("info for patients", res.getInformationForPatients().get(0));
-                        }
-                        medicationSearchAdaptor.setData(medicineSearchResponse);
-                    }
-                    else {
-                        Log.d("error??", "failed");
-                        medicationSearchAdaptor.notifyDataSetChanged();
-                    }
-                });
-
-
+                performSearch(query);
                 return true;
             }
 
@@ -96,6 +88,9 @@ public class AddMedicationFragment extends Fragment {
         return view;
     }
 
+    public void performSearch(String query) {
+        medicationViewModel.searchForMedication(query, "1");
+    }
 //    private void prepareMedicationData() {
 //        Medication medication = new Medication("Metformin", 200, "mg", 2);
 //        medicationList.add(medication);
