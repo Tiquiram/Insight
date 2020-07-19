@@ -14,8 +14,8 @@ import android.view.ViewGroup;
 import android.widget.GridLayout;
 
 import com.example.fragment_example.fragments.medicationModule.AddMedicationFragment;
-import com.example.fragment_example.fragments.medicationModule.MedicationFragment;
 import com.example.fragment_example.R;
+import com.example.fragment_example.fragments.weightModule.WeightFragment;
 
 public class HomepageFragment extends Fragment {
     FragmentTransaction fragmentTransaction;
@@ -53,13 +53,14 @@ public class HomepageFragment extends Fragment {
                         fragmentTransaction.replace(R.id.main_container, medicationFragment);
                         fragmentTransaction.commit();
                     }else if(finalI==2){
-
                     }else if(finalI==3){
 
                     }else if(finalI==4){
-
+                        fragmentTransaction = getFragmentManager().beginTransaction();
+                        WeightFragment weightFragment = new WeightFragment();
+                        fragmentTransaction.replace(R.id.main_container, weightFragment);
+                        fragmentTransaction.commit();
                     }else{
-
                     }
                 }
             });

@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,19 +17,12 @@ import com.example.fragment_example.adaptors.MedicationAdaptor;
 import com.example.fragment_example.R;
 import com.example.fragment_example.databinding.FragmentMedicationBinding;
 import com.example.fragment_example.model.medicationModule.Medication;
-import com.example.fragment_example.model.medicationModule.MedicationResult;
 import com.example.fragment_example.model.medicationModule.MedicineSearchResponse;
 
-import com.example.fragment_example.network.RetrofitService;
-import com.example.fragment_example.network.RetrofitServiceOpenFDA;
 import com.example.fragment_example.viewmodels.MedicationViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MedicationFragment extends Fragment {
 
