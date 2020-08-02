@@ -20,8 +20,4 @@ public class WeightFragment extends Fragment {
 
         return view;
     }
-
-
-
-
 }

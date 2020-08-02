@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/title_card_view"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/weight_card_view"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:layout_marginLeft="20dp"
@@ -28,27 +29,40 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/medication_search_name"
+            android:id="@+id/weight_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="28dp"
-            android:text="@string/medication_search_name"
-            android:textSize="18sp"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="60dp"
+            android:text="@string/weight_data_input"
+            android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/medication_search_description"
+            android:id="@+id/mass_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="28dp"
-            android:text="@string/medication_search_description"
+            android:layout_marginStart="92dp"
+            android:layout_marginLeft="92dp"
+            android:layout_marginTop="60dp"
+            android:text="@string/mass_unit"
+            android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/medication_search_name" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mass_unit2"
+            android:layout_width="286dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="100dp"
+            android:text="@string/date"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

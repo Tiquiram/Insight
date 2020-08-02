@@ -4,7 +4,7 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="e_mail">Email</string>
-    <string name="tag"> INtelligent System for Inspiring Glucose-related health management for Hispanic individuals with Type 2 Diabetes</string>
+    <string name="tag"> Intelligent System for Inspiring Glucose-related health management for Hispanic individuals with Type 2 Diabetes</string>
     <string name="swipe_right_to_login">Swipe Right To Login</string>
     <string name="register">Register</string>
     <string name="re_type_password">Re-type Password</string>
@@ -46,6 +46,10 @@
     <string name="add_medication_title">Add Medicine</string>
     <string name="medication_search_name">Medication Name</string>
     <string name="medication_search_description">Medication Description</string>
+    <string name="weight_data_input">150</string>
+    <string name="mass_unit">lbs</string>
+    <string name="date">Sunday, August 2, 2020</string>
+    <string name="weight_log">Weight Log</string>
     <string-array name="inches">
         <item>0</item>
         <item>1</item>
